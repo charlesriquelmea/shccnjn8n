@@ -1,25 +1,20 @@
 "use client"
 
-import { motion, useReducedMotion } from "framer-motion"
-import { Bot, Code2, Cloud, Zap } from "lucide-react"
+import { motion } from "framer-motion"
+import { Bot, Code2, Cloud, Zap, DollarSign, Settings, TrendingUp, Brain } from "lucide-react"
 import { copy } from "@/lib/copy"
 import type { Lang } from "@/lib/copy"
+import { JSX } from "react"
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 }
-const stagger = {
+
+const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 }
-
-const ICONS = [
-  <Bot key="bot" className="w-6 h-6" style={{ color: "#D9A84E" }} />,
-  <Code2 key="code" className="w-6 h-6" style={{ color: "#D9A84E" }} />,
-  <Cloud key="cloud" className="w-6 h-6" style={{ color: "#D9A84E" }} />,
-  <Zap key="zap" className="w-6 h-6" style={{ color: "#D9A84E" }} />,
-]
 
 interface Props {
   lang: Lang
@@ -27,95 +22,108 @@ interface Props {
 
 export function N8nAdvantage({ lang }: Props) {
   const c = copy[lang]
+  const isWorkshop = !!c.workshop
+  const t = (isWorkshop ? c.workshop : c) as any
+
+  const iconMap: Record<string, JSX.Element> = {
+    bot: <Bot className="w-6 h-6" />,
+    code: <Code2 className="w-6 h-6" />,
+    cloud: <Cloud className="w-6 h-6" />,
+    zap: <Zap className="w-6 h-6" />,
+    dollar: <DollarSign className="w-6 h-6" />,
+    settings: <Settings className="w-6 h-6" />,
+    trending: <TrendingUp className="w-6 h-6" />,
+    brain: <Brain className="w-6 h-6" />,
+  }
+
+  const title = t.n8nTitle ?? c.advantageTitle
+  const intro = t.n8nIntro ?? c.advantageIntro
+  const cards = t.n8nCards ?? c.advantageCards
+  const quote = t.n8nQuote ?? c.advantageQuote
 
   return (
-    <section id="advantage" className="py-24" style={{ backgroundColor: "#071228" }}>
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+    <section id="advantage" className="py-24" style={{ backgroundColor: "#04091A" }}>
+      <div className="max-w-5xl mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center mb-4"
+          className="text-center mb-12"
         >
           <h2
             className="text-3xl md:text-4xl font-bold mb-4 text-balance font-serif"
             style={{ color: "#FDFAF4" }}
           >
-            {c.advantageTitle}
+            {title}
           </h2>
           <p
-            className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto"
+            className="text-base leading-relaxed max-w-3xl mx-auto"
             style={{ color: "rgba(201,195,181,0.7)" }}
           >
-            {c.advantageIntro}
+            {intro}
           </p>
         </motion.div>
 
         <motion.div
-          variants={stagger}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {c.advantageCards.map((card, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="rounded-xl p-6 transition-all"
-              style={{
-                backgroundColor: "#0C1E40",
-                border: "1px solid rgba(201,147,58,0.2)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(201,147,58,0.45)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(201,147,58,0.2)"
-              }}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                {ICONS[i]}
-                <h3 className="font-bold text-lg" style={{ color: "#FDFAF4" }}>
-                  {card.title}
-                </h3>
-              </div>
-              <p
-                className="leading-relaxed text-sm mb-4"
-                style={{ color: "rgba(201,195,181,0.7)" }}
-              >
-                {card.body}
-              </p>
-              <span
-                className="inline-flex font-mono text-xs px-3 py-1 rounded-full"
+          {cards?.map((card: any, i: number) => {
+            const Icon = iconMap[card.icon] ?? <Zap className="w-6 h-6" />
+            return (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="rounded-xl p-6 transition-all border"
                 style={{
-                  backgroundColor: "rgba(201,147,58,0.1)",
-                  border: "1px solid rgba(201,147,58,0.3)",
-                  color: "#D9A84E",
+                  backgroundColor: "#0C1E40",
+                  borderColor: "rgba(201,147,58,0.2)",
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(139,92,246,0.3)")}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(201,147,58,0.2)")}
               >
-                {card.stat}
-              </span>
-            </motion.div>
-          ))}
+                <div className="flex items-center gap-3 mb-3">
+                  <div style={{ color: "#D9A84E" }}>{Icon}</div>
+                  <h3 className="font-bold text-lg font-serif" style={{ color: "#FDFAF4" }}>
+                    {card.title}
+                  </h3>
+                </div>
+                <p className="leading-relaxed text-sm mb-4" style={{ color: "rgba(201,195,181,0.6)" }}>
+                  {card.body}
+                </p>
+                <span
+                  className="inline-flex font-mono text-xs px-3 py-1 rounded-full border"
+                  style={{
+                    backgroundColor: "rgba(217,168,78,0.1)",
+                    borderColor: "rgba(217,168,78,0.2)",
+                    color: "#D9A84E",
+                  }}
+                >
+                  {card.stat}
+                </span>
+              </motion.div>
+            )
+          })}
         </motion.div>
 
-        <motion.blockquote
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-14 text-center border-l-4 pl-6 text-left max-w-2xl mx-auto"
-          style={{ borderColor: "#C9933A" }}
-        >
-          <p
-            className="text-lg md:text-xl italic leading-relaxed"
-            style={{ color: "rgba(201,195,181,0.8)" }}
+        {quote && (
+          <motion.blockquote
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-14 text-center italic max-w-2xl mx-auto border-l-4 pl-6"
+            style={{ borderColor: "#D9A84E" }}
           >
-            &ldquo;{c.advantageQuote}&rdquo;
-          </p>
-        </motion.blockquote>
+            <p className="text-lg md:text-xl leading-relaxed" style={{ color: "rgba(201,195,181,0.8)" }}>
+              &ldquo;{quote}&rdquo;
+            </p>
+          </motion.blockquote>
+        )}
       </div>
     </section>
   )
