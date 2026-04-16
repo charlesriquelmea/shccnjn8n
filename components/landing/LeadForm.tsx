@@ -42,12 +42,6 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
 
   /* const progress = step < 0 ? 0 : ((step + 1) / TOTAL_STEPS) * 100 */
 
-  const advance = () => {
-    setDirection(1)
-    setStep((s) => s + 1)
-    trackEvent("form_step_complete", { step })
-  }
-  
   useEffect(() => {
     if (step === 1) setTimeout(() => phoneRef.current?.focus(), 350)
     if (step === 2) setTimeout(() => emailRef.current?.focus(), 350)

@@ -3,8 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { copy } from "@/lib/copy"
-import type { Lang } from "@/lib/copy"
+import { Lang, copy } from "@/lib/copy"
 
 interface Props {
   lang: Lang
@@ -68,7 +67,7 @@ export function Navbar({ lang, onLangChange, onCtaClick }: Props) {
             </span>
           </div>
           <span
-            className="text-[8px] font-semibold tracking-[0.18em] uppercase mt-[3px] whitespace-nowrap"
+            className="text-[8px] font-semibold tracking-[0.18em] uppercase mt-0.75 whitespace-nowrap"
             style={{ color: "rgba(201,147,58,0.85)" }}
           >
             Alianza Tecnol&oacute;gica Oficial
