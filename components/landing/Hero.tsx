@@ -4,6 +4,37 @@ import { useState, useEffect, useCallback } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { copy } from "@/lib/copy"
 import type { Lang } from "@/lib/copy"
+import { Check } from "lucide-react"
+
+function WorkflowDiagram({ nodes, isHovered }: { nodes: { label: string; color: string }[]; isHovered: boolean }) {
+  return (
+    <div className="flex items-center gap-1 flex-wrap">
+      {nodes.map((node, i) => (
+        <div key={i} className="flex items-center gap-1">
+          <motion.div
+            className="px-2 py-1 rounded text-xs font-mono border whitespace-nowrap"
+            style={{ borderColor: node.color + "66", backgroundColor: node.color + "22", color: node.color }}
+            animate={{ boxShadow: isHovered ? `0 0 8px ${node.color}55` : "none" }}
+            transition={{ duration: 0.3 }}
+          >
+            {node.label}
+          </motion.div>
+          {i < nodes.length - 1 && (
+            <div className="relative flex items-center" style={{ width: 28 }}>
+              <div className="w-full border-t border-dashed border-zinc-600" />
+              <motion.div
+                className="absolute w-2 h-2 rounded-full bg-violet-500"
+                style={{ left: 0 }}
+                animate={{ x: [0, 24] }}
+                transition={{ duration: isHovered ? 0.5 : 1.5, repeat: Infinity, ease: "linear", delay: i * 0.2 }}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 // ─── Typewriter ───────────────────────────────────────────────────────────────
 function Typewriter({ phrases, prefix }: { phrases: readonly string[]; prefix: string }) {
@@ -92,11 +123,30 @@ function BgNodes() {
   )
 }
 
+  const wf1Nodes = [
+    { label: "Form 📋", color: "#8B5CF6" },
+    { label: "n8n ⚡", color: "#8B5CF6" },
+    { label: "Sheets 📊", color: "#10B981" },
+    { label: "WhatsApp 💬", color: "#22C55E" },
+  ]
+  const wf2Nodes = [
+    { label: "Event 🎯", color: "#22D3EE" },
+    { label: "n8n ⚡", color: "#8B5CF6" },
+    { label: "Resend 📧", color: "#3B82F6" },
+    { label: "Email ✉️", color: "#3B82F6" },
+  ]
+  const wf3Nodes = [
+    { label: "Webhook 🔗", color: "#22D3EE" },
+    { label: "n8n ⚡", color: "#8B5CF6" },
+    { label: "Claude/GPT 🧠", color: "#F97316" },
+    { label: "Reply 💬", color: "#22C55E" },
+  ]
+
 // ─── Brand visual panel (right side) ─────────────────────────────────────────
 function BrandPanel() {
   const shouldReduce = useReducedMotion()
   return (
-    <motion.div
+/*     <motion.div
       className="relative"
       animate={shouldReduce ? {} : { y: [0, -8, 0] }}
       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -110,7 +160,6 @@ function BrandPanel() {
           boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,147,58,0.15)",
         }}
       >
-        {/* Header bar */}
         <div
           className="px-5 py-3 flex items-center justify-between"
           style={{ backgroundColor: "#0C1E40", borderBottom: "1px solid rgba(201,147,58,0.2)" }}
@@ -128,7 +177,6 @@ function BrandPanel() {
           </span>
         </div>
 
-        {/* Services list */}
         <div className="p-5 flex flex-col gap-3 min-w-[280px]">
           {[
             { label: "IA Engineering", status: "Activo", color: "#D9A84E" },
@@ -161,8 +209,6 @@ function BrandPanel() {
             </motion.div>
           ))}
         </div>
-
-        {/* Discount badge */}
         <div
           className="px-5 py-3 flex items-center justify-between"
           style={{ backgroundColor: "rgba(201,147,58,0.08)", borderTop: "1px solid rgba(201,147,58,0.2)" }}
@@ -175,7 +221,48 @@ function BrandPanel() {
           </span>
         </div>
       </div>
-    </motion.div>
+    </motion.div> */
+              <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block"
+          >
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden"
+              style={{ transform: "rotate(-2deg)" }}
+            >
+              <div className="bg-zinc-800 px-4 py-2.5 flex items-center gap-2 border-b border-zinc-700">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-xs text-zinc-400 font-mono ml-2">n8n · Workflow Editor</span>
+              </div>
+              <div className="p-4 flex flex-col gap-5">
+                {[
+                  { label: "Lead Capture CRM", nodes: wf1Nodes },
+                  { label: "Email Marketing", nodes: wf2Nodes },
+                  { label: "AI Agent", nodes: wf3Nodes },
+                ].map((wf, i) => (
+                  <div key={i} className="flex flex-col gap-1.5">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-xs text-zinc-400 font-mono">{wf.label}</span>
+                    </div>
+                    <WorkflowDiagram nodes={wf.nodes} isHovered={false} />
+                  </div>
+                ))}
+              </div>
+              <div className="bg-zinc-800 border-t border-zinc-700 px-4 py-2 flex items-center gap-2">
+                <Check className="w-3.5 h-3.5 text-green-400" />
+                <span className="text-xs text-zinc-400 font-mono">3 workflows active · Last run: 2s ago · 847 executions</span>
+              </div>
+            </motion.div>
+          </motion.div>
   )
 }
 

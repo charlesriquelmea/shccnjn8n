@@ -435,8 +435,10 @@ export const copy = {
         {
           label: "Chamber of Commerce Latino NJ",
           badge: "Miembros",
-          price: "$297",
-          originalPrice: "$397",
+          /* price: "$297",
+          originalPrice: "$397", */
+          price: "$397",
+          originalPrice: "$497",
           savings: "Ahorras $100",
           description: "Exclusivo para miembros activos de la Chamber of Commerce Latino New Jersey.",
           cta: "Quiero este precio →",
@@ -468,7 +470,8 @@ export const copy = {
       paymentTitle: "Opciones de pago flexibles:",
       paymentOptions: [
         { label: "Pago completo", detail: "$397 hoy", highlight: false },
-        { label: "3 cuotas", detail: "~$99–$107 / mes", highlight: false },
+        /* { label: "3 cuotas", detail: "~$99–$107 / mes", highlight: false }, */
+        { label: "3 cuotas", detail: " ~$140 / (5.9% +$0.3)", highlight: false },
         { label: "Reserva anticipada", detail: "$150 hoy → resto en 2 cuotas hasta el workshop", highlight: true },
       ],
       credibilityTitle: "Credibilidad",

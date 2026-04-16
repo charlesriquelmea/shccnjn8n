@@ -26,7 +26,6 @@ export function Pricing({ lang, onCtaClick }: Props) {
   const t = (isWorkshop ? c.workshop : c) as any
 
   if (!t.pricingTiers) return null
-
   return (
     <>
       {/* ── Value receipt ── */}

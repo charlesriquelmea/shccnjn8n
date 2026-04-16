@@ -69,7 +69,7 @@ export default function Page() {
         <WorkflowCards lang={lang} onCtaClick={scrollToForm} />
 
         {/* Testimonials */}
-        <Testimonials lang={lang} />
+        {/* <Testimonials lang={lang} /> */}
 
         {/* Curriculum / Schedule */}
         <Curriculum lang={lang} />
