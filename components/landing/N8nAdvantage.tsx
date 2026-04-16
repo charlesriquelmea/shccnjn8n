@@ -30,7 +30,7 @@ export function N8nAdvantage({ lang }: Props) {
 
   return (
     <section id="advantage" className="py-24" style={{ backgroundColor: "#071228" }}>
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+      <div className="max-w-6xl  mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -106,7 +106,7 @@ export function N8nAdvantage({ lang }: Props) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-14 text-center border-l-4 pl-6 text-left max-w-2xl mx-auto"
+          className="mt-14 text-center border-l-4 pl-6 max-w-2xl mx-auto"
           style={{ borderColor: "#C9933A" }}
         >
           <p

@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     locale: 'es_US',
     type: 'website',
   },
+    icons: {
+    icon: 'favicon.png',
+    apple: 'favicon.png',
+  },
 }
 
 export default function RootLayout({
@@ -27,7 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark bg-navy-950">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#04091A] text-[#FDFAF4]`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased
+       bg-navy-950 text-cream`}>
         {children}
         <Analytics />
       </body>

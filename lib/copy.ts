@@ -258,6 +258,8 @@ export const copy = {
     formStep1Hint: "Presiona Enter ↵",
     formStep2Label: "¿Cuál es tu WhatsApp? 📱",
     formStep2Sub: "Te contactamos para confirmar tu consultoría gratuita",
+    formStepEmailLabel: "¿Cuál es tu correo electrónico? 📧",
+    formStepEmailSub: "Para enviarte los detalles y confirmar tu consultoría estratégica.",
     formStep3Label: "¿Cómo describes tu negocio? 🏢",
     formStep3Options: [
       { icon: "🚀", label: "Emprendedor / Solopreneur", sub: "Opero mi propio negocio" },
@@ -568,6 +570,8 @@ export const copy = {
     formStep1Hint: "Press Enter ↵",
     formStep2Label: "What is your WhatsApp? 📱",
     formStep2Sub: "We contact you to confirm your free consultation",
+    formStepEmailLabel: "What is your email address? 📧",
+    formStepEmailSub: "To send you the details and confirm your strategic consultation.",
     formStep3Label: "How do you describe your business? 🏢",
     formStep3Options: [
       { icon: "🚀", label: "Entrepreneur / Solopreneur", sub: "I run my own business" },

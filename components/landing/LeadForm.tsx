@@ -6,7 +6,7 @@ import { Loader2, CheckCircle, Medal } from "lucide-react"
 import { copy, PHONE_NUMBER } from "@/lib/copy"
 import type { Lang } from "@/lib/copy"
 
-const TOTAL_STEPS = 5
+const TOTAL_STEPS = 6
 
 const slideVariants = {
   enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
@@ -27,24 +27,57 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
   const [step, setStep] = useState(-1)
   const [dir, setDir] = useState(1)
   const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [business, setBusiness] = useState("")
   const [challenge, setChallenge] = useState("")
   const [shake, setShake] = useState(false)
   const [loadingIdx, setLoadingIdx] = useState(0)
   const [done, setDone] = useState(false)
+  const [direction, setDirection] = useState(1)
   const inputRef = useRef<HTMLInputElement>(null)
+  const nameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const phoneRef = useRef<HTMLInputElement>(null)
 
-  const progress = step < 0 ? 0 : ((step + 1) / TOTAL_STEPS) * 100
+  /* const progress = step < 0 ? 0 : ((step + 1) / TOTAL_STEPS) * 100 */
 
+  const advance = () => {
+    setDirection(1)
+    setStep((s) => s + 1)
+    trackEvent("form_step_complete", { step })
+  }
+  
   useEffect(() => {
-    if (step >= 0 && step < 4 && inputRef.current) {
-      setTimeout(() => inputRef.current?.focus(), 350)
-    }
+    if (step === 1) setTimeout(() => phoneRef.current?.focus(), 350)
+    if (step === 2) setTimeout(() => emailRef.current?.focus(), 350)
   }, [step])
 
   useEffect(() => {
-    if (step !== 4) return
+    if (step !== 5) return
+
+    // Trigger email sending
+    const sendEmail = async () => {
+      try {
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            business,
+            challenge,
+            lang,
+          }),
+        })
+      } catch (err) {
+        console.error("Error sending lead email:", err)
+      }
+    }
+
+    sendEmail()
+
     let i = 0
     const t = setInterval(() => {
       i++
@@ -69,8 +102,9 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
   const validateAndNext = useCallback(() => {
     if (step === 0 && name.trim().length < 2) { setShake(true); setTimeout(() => setShake(false), 500); return }
     if (step === 1 && phone.replace(/\D/g, "").length < 10) { setShake(true); setTimeout(() => setShake(false), 500); return }
+    if (step === 2 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setShake(true); setTimeout(() => setShake(false), 500); return }
     goNext(step + 1)
-  }, [step, name, phone, goNext])
+  }, [step, name, phone, email, goNext])
 
   const handleKey = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") validateAndNext()
@@ -100,12 +134,12 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
           animate={
             highlightForm && !shouldReduce
               ? {
-                  boxShadow: [
-                    "0 0 0 0px rgba(201,147,58,0)",
-                    "0 0 0 4px rgba(201,147,58,0.4)",
-                    "0 0 0 0px rgba(201,147,58,0)",
-                  ],
-                }
+                boxShadow: [
+                  "0 0 0 0px rgba(201,147,58,0)",
+                  "0 0 0 4px rgba(201,147,58,0.4)",
+                  "0 0 0 0px rgba(201,147,58,0)",
+                ],
+              }
               : {}
           }
           transition={{ duration: 0.7 }}
@@ -117,13 +151,13 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
           }}
         >
           {/* Progress bar */}
-          {step >= 0 && step < 4 && (
+          {step >= 0 && step < 5 && (
             <div className="h-1" style={{ backgroundColor: "#0C1E40" }}>
               <motion.div
                 className="h-full"
                 style={{ backgroundColor: "#C9933A", transformOrigin: "left" }}
                 initial={{ scaleX: 0 }}
-                animate={{ scaleX: progress / 100 }}
+                animate={{ scaleX: ((step + 1) / TOTAL_STEPS) }}
                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
               />
             </div>
@@ -248,8 +282,55 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
                 </motion.div>
               )}
 
-              {/* STEP 2: Business type */}
+              {/* STEP 2: Email */}
               {step === 2 && (
+                <motion.div
+                  key="email"
+                  custom={dir}
+                  variants={shouldReduce ? {} : slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="flex flex-col gap-6 absolute inset-8"
+                >
+                  <label className="text-xl font-bold" style={{ color: "#FDFAF4" }}>
+                    {c.formStepEmailLabel}
+                  </label>
+                  <p className="text-sm -mt-4" style={{ color: "rgba(201,195,181,0.5)" }}>
+                    {c.formStepEmailSub}
+                  </p>
+                  <motion.input
+                    ref={inputRef}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={handleKey}
+                    placeholder="ejemplo@correo.com"
+                    animate={shake && !shouldReduce ? { x: [-4, 4, -4, 4, 0] } : {}}
+                    transition={{ duration: 0.3 }}
+                    className="bg-transparent text-2xl py-2 outline-none transition-colors"
+                    style={{
+                      color: "#FDFAF4",
+                      borderBottom: "2px solid rgba(201,147,58,0.4)",
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = "#D9A84E")}
+                    onBlur={(e) => (e.target.style.borderBottomColor = "rgba(201,147,58,0.4)")}
+                  />
+                  <p className="text-xs" style={{ color: "rgba(201,195,181,0.4)" }}>
+                    {c.formStep1Hint}
+                  </p>
+                  <button
+                    onClick={validateAndNext}
+                    className="mt-auto font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
+                    style={{ backgroundColor: "#C9933A", color: "#04091A" }}
+                  >
+                    {c.formNextBtn}
+                  </button>
+                </motion.div>
+              )}
+
+              {/* STEP 3: Business type */}
+              {step === 3 && (
                 <motion.div
                   key="business"
                   custom={dir}
@@ -266,7 +347,7 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
                     {c.formStep3Options.map((opt) => (
                       <button
                         key={opt.label}
-                        onClick={() => { setBusiness(opt.label); goNext(3) }}
+                        onClick={() => { setBusiness(opt.label); goNext(4) }}
                         className="flex items-center gap-3 p-3 rounded-xl text-left transition-all"
                         style={{
                           border: "1px solid rgba(201,147,58,0.2)",
@@ -295,8 +376,8 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
                 </motion.div>
               )}
 
-              {/* STEP 3: Technology challenge */}
-              {step === 3 && (
+              {/* STEP 4: Technology challenge */}
+              {step === 4 && (
                 <motion.div
                   key="challenge"
                   custom={dir}
@@ -313,7 +394,7 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
                     {c.formStep4Options.map((opt) => (
                       <button
                         key={opt.label}
-                        onClick={() => { setChallenge(opt.label); goNext(4) }}
+                        onClick={() => { setChallenge(opt.label); goNext(5) }}
                         className="flex items-center gap-3 p-3 rounded-xl text-left transition-all"
                         style={{ border: "1px solid rgba(201,147,58,0.2)" }}
                         onMouseEnter={(e) => {
@@ -340,8 +421,8 @@ export function LeadForm({ lang, formRef, highlightForm }: Props) {
                 </motion.div>
               )}
 
-              {/* STEP 4: Loading */}
-              {step === 4 && !done && (
+              {/* STEP 5: Loading */}
+              {step === 5 && !done && (
                 <motion.div
                   key="loading"
                   custom={dir}
