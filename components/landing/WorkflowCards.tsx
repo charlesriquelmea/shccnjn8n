@@ -196,7 +196,8 @@ export function WorkflowCards({ lang, onCtaClick }: Props) {
           </p>
           <button
             onClick={onCtaClick}
-            className="font-bold px-8 py-4 rounded-xl transition-all hover:opacity-90 hover:-translate-y-0.5"
+            className="font-bold px-8 py-4 rounded-xl transition-all 
+            hover:opacity-90 hover:-translate-y-0.5"
             style={{
               backgroundColor: "#D9A84E",
               color: "#04091A",

@@ -567,14 +567,16 @@ export const copy = {
           },
         },
         gapTable: {
-          title: "Brecha Competitiva",
-          headers: ["Función", "Proceso Manual", "Automatizado (n8n)"],
-          rows: [
-            { "0": "Captura de Leads", "1": "Manual / Lento", "2": "Instantáneo" },
-            { "0": "Análisis con IA", "1": "No existe", "2": "En cada flujo" },
-            { "0": "Escalabilidad", "1": "Limitada a tu tiempo", "2": "Infinita" },
-          ],
-        },
+        title: "La empresa que no automatiza hoy es más cara de operar que su competidor mañana",
+        headers: ["Capacidad", "Sin n8n", "Con n8n"],
+        rows: [
+          ["Respuesta a leads", "24–48 hrs (manual)", "< 90 seg (autónomo)"],
+          ["Escala de operaciones", "Lineal al headcount", "Exponencial sin contratar"],
+          ["Consistencia de datos", "Variable — depende del operador", "Uniforme y auditable"],
+          ["Integración de herramientas", "Silos — cada app aislada", "Orquestada — todo conectado"],
+          ["Costo operativo por volumen", "Creciente con cada hire", "Fijo y decreciente"],
+        ],
+      },
         risk: [
           { title: "Obsolescencia", text: "El mercado se mueve rápido. Sin automatización te quedas atrás." },
           { title: "Burnout", text: "Tu equipo está agotado de hacer tareas mecánicas." },
@@ -1153,14 +1155,16 @@ export const copy = {
           },
         },
         gapTable: {
-          title: "Competitive Gap",
-          headers: ["Feature", "Manual Process", "Automated (n8n)"],
-          rows: [
-            { "0": "Lead Capture", "1": "Manual / Slow", "2": "Instant" },
-            { "0": "AI Analysis", "1": "Non-existent", "2": "In every flow" },
-            { "0": "Scalability", "1": "Limited to your time", "2": "Infinite" },
-          ],
-        },
+        title: "The company that doesn't automate today is more expensive to operate than its competitor tomorrow",
+        headers: ["Capacity", "Without n8n", "With n8n"],
+        rows: [
+          ["Lead response", "24–48 hrs (manual)", "< 90 sec (autonomous)"],
+          ["Operations scale", "Linear to headcount", "Exponential without hiring"],
+          ["Data consistency", "Variable — depends on operator", "Uniform and auditable"],
+          ["Tool integration", "Silos — each app isolated", "Orchestrated — everything connected"],
+          ["Op cost per volume", "Increasing with each hire", "Fixed and decreasing"],
+        ],
+      },
         risk: [
           { title: "Obsolescence", text: "The market moves fast. Without automation, you stay behind." },
           { title: "Burnout", text: "Your team is exhausted from doing mechanical tasks." },

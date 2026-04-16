@@ -22,6 +22,7 @@ import { Footer } from "@/components/landing/Footer"
 import { MobileStickyBar } from "@/components/landing/MobileStickyBar"
 import type { Lang } from "@/lib/copy"
 import HeroUrgencySection from "@/components/sections/HeroUrgencySection"
+import WorkflowsSection from "@/components/landing/WorkflowsSection"
 
 export default function Page() {
   const [lang, setLang] = useState<Lang>("es")
@@ -50,53 +51,55 @@ export default function Page() {
       {/* Hero */}
       <Hero lang={lang} onCtaClick={scrollToForm} />
 
-      {/* Tech ticker */}
-      <TechTicker lang={lang} />
+      <WorkflowsSection lang={lang} />
 
-      {/* AI Engineering & Software Factory Advantage */}
-      <N8nAdvantage lang={lang} />
+        {/* Tech ticker */}
+        <TechTicker lang={lang} />
 
-      {/* Pain Points */}
-      <PainPoints lang={lang} />
+        {/* AI Engineering & Software Factory Advantage */}
+        <N8nAdvantage lang={lang} />
 
-      {/* Shift / Philosophy */}
-      <Shift lang={lang} />
+        {/* Pain Points */}
+        <PainPoints lang={lang} />
 
-      {/* Workflow Cards */}
-      <WorkflowCards lang={lang} onCtaClick={scrollToForm} />
+        {/* Shift / Philosophy */}
+        <Shift lang={lang} />
 
-      {/* Testimonials */}
-      <Testimonials lang={lang} />
+        {/* Workflow Cards */}
+        <WorkflowCards lang={lang} onCtaClick={scrollToForm} />
 
-      {/* Curriculum / Schedule */}
-      <Curriculum lang={lang} />
+        {/* Testimonials */}
+        <Testimonials lang={lang} />
 
-      {/* Credibility */}
-      <Credibility lang={lang} />
+        {/* Curriculum / Schedule */}
+        <Curriculum lang={lang} />
 
-      {/* Value Stack & Pricing */}
-      <Pricing lang={lang} onCtaClick={scrollToForm} />
+        {/* Credibility */}
+        <Credibility lang={lang} />
 
-      {/* Hero Urgency */}
-      <HeroUrgencySection lang={lang} />
+        {/* Value Stack & Pricing */}
+        <Pricing lang={lang} onCtaClick={scrollToForm} />
 
-      {/* Guarantee */}
-      <Guarantee lang={lang} />
+        {/* Hero Urgency */}
+        <HeroUrgencySection lang={lang} />
 
-      {/* Instructors */}
-      <Instructors lang={lang} />
+        {/* Guarantee */}
+        <Guarantee lang={lang} />
 
-      {/* FAQ */}
-      <FAQ lang={lang} />
+        {/* Instructors */}
+        <Instructors lang={lang} />
 
-      {/* Lead Form */}
-      <LeadForm lang={lang} formRef={formRef} highlightForm={highlightForm} />
+        {/* FAQ */}
+        <FAQ lang={lang} />
 
-      {/* Footer */}
-      <Footer lang={lang} />
+        {/* Lead Form */}
+        <LeadForm lang={lang} formRef={formRef} highlightForm={highlightForm} />
 
-      {/* Mobile sticky CTA bar */}
-      <MobileStickyBar lang={lang} onCtaClick={scrollToForm} />
+        {/* Footer */}
+        <Footer lang={lang} />
+
+        {/* Mobile sticky CTA bar */}
+        <MobileStickyBar lang={lang} onCtaClick={scrollToForm} />
     </div>
   )
 }
