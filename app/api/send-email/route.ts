@@ -12,8 +12,8 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, email, phone, business, challenge, lang } = body;
 
-        // const fromEmail = 'business@business.protolylat.com'
-        const fromEmail = 'onboarding@resend.dev';
+        const fromEmail = 'business@business.protolylat.com'
+        // const fromEmail = 'onboarding@resend.dev';
 
         if (!mailPrimero) {
             return NextResponse.json({ error: "ADMIN_EMAIL not configured" }, { status: 500 });
@@ -22,10 +22,8 @@ export async function POST(request: Request) {
         const { data, error } = await resend.emails.send({
             from: fromEmail,
             
-            /* to: [mailPrimero],
-            cc: [mailSegundo, mailTercero], */
-
-            to: ['adrianmespindola@gmail.com'],
+            to: [mailPrimero],
+            cc: [mailSegundo, mailTercero],
             subject: `Nuevo Lead HCC-NJ: ${name}`,
             html: buildEmailHtml({ name, email, phone, business, challenge, lang }),
         });
