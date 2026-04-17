@@ -65,8 +65,8 @@ export const copy = {
     heroCta: "🏆 Reclamar mis $100 de Descuento →",
     heroCopy: "Descuento de $100 exclusivo miembros SHCCNJ · $197 vs $297 precio público · Garantía de 30 días",
     heroSecondary: "Ver qué aprenderás ↓",
-    heroPricePublic: "$297",
-    heroPriceMember: "$197",
+    heroPricePublic: "$497",
+    heroPriceMember: "$397",
     heroPriceLabel: "precio exclusivo miembros SHCCNJ",
     heroPills: [
       { icon: "📅", text: "Sábado 2 de Mayo, 2026" },
@@ -456,8 +456,6 @@ export const copy = {
         {
           label: "Chamber of Commerce Latino NJ",
           badge: "Miembros",
-          /* price: "$297",
-          originalPrice: "$397", */
           price: "$397",
           originalPrice: "$497",
           savings: "Ahorras $100",
@@ -668,8 +666,8 @@ export const copy = {
     heroCta: "🏆 Claim my $100 Discount →",
     heroCopy: "$100 discount exclusive to SHCCNJ members · $197 vs $297 public price · 30-day guarantee",
     heroSecondary: "See what you'll learn ↓",
-    heroPricePublic: "$297",
-    heroPriceMember: "$197",
+    heroPricePublic: "$497",
+    heroPriceMember: "$397",
     heroPriceLabel: "exclusive SHCCNJ member price",
     heroPills: [
       { icon: "📅", text: "Saturday, May 2, 2026" },
@@ -1064,8 +1062,8 @@ export const copy = {
         {
           label: "Chamber of Commerce Latino NJ",
           badge: "Members",
-          price: "$297",
-          originalPrice: "$397",
+          price: "$397",
+          originalPrice: "$497",
           savings: "You save $100",
           description: "Exclusive for active members of the Chamber of Commerce Latino New Jersey.",
           cta: "Get this price →",
