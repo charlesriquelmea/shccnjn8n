@@ -6,6 +6,9 @@
 
 export const PHONE_NUMBER = "12015550000" // [REEMPLAZAR: NÚMERO_WA_SIN_SIMBOLOS]
 export const CONTACT_EMAIL = "hccnj@protolylat.com"
+export const WHATSAPP_URL =
+  "https://wa.me/15513349406?text=Hola%20Carlos%2C%20soy%20miembro%20de%20la%20Statewide%20Hispanic%20Chamber%20of%20Commerce%20NJ%20%28SHCCNJ%29%20y%20quiero%20reclamar%20mi%20descuento%20exclusivo%20de%20%24100%20para%20el%20taller%20de%20Next.js%20del%20s%C3%A1bado%202%20de%20mayo.%20Mi%20nombre%20es%3A"
+
 
 export type Lang = "es" | "en"
 
@@ -53,6 +56,24 @@ export const copy = {
     memberBannerTitle: "Beneficio Exclusivo para Miembros",
     memberBannerBody:
       "Como miembro activo de la Cámara Hispana de Comercio de NJ, tienes acceso a un descuento inmediato de $100 en cualquier solución de infraestructura digital o IA de Protolylat. Sin condiciones. Solo presenta tu membresía.",
+
+    trustSignals: [
+      { icon: "🏆", text: "Exclusivo SHCCNJ" },
+      { icon: "🛡️", text: "Garantía 30 días" },
+      { icon: "💬", text: "Soporte en Español" },
+    ],
+    heroCta: "🏆 Reclamar mis $100 de Descuento →",
+    heroCopy: "Descuento de $100 exclusivo miembros SHCCNJ · $197 vs $297 precio público · Garantía de 30 días",
+    heroSecondary: "Ver qué aprenderás ↓",
+    heroPricePublic: "$297",
+    heroPriceMember: "$197",
+    heroPriceLabel: "precio exclusivo miembros SHCCNJ",
+    heroPills: [
+      { icon: "📅", text: "Sábado 2 de Mayo, 2026" },
+      { icon: "📍", text: "New Jersey + Online" },
+      { icon: "⏱", text: "Solo 3 Horas" },
+      { icon: "🇺🇸", text: "En Español" },
+    ],
 
     // ── Tech Ticker ──────────────────────────────────────────────────────────
     techTickerPrefix: "Tecnología que usamos →",
@@ -570,16 +591,16 @@ export const copy = {
           },
         },
         gapTable: {
-        title: "La empresa que no automatiza hoy es más cara de operar que su competidor mañana",
-        headers: ["Capacidad", "Sin n8n", "Con n8n"],
-        rows: [
-          ["Respuesta a leads", "24–48 hrs (manual)", "< 90 seg (autónomo)"],
-          ["Escala de operaciones", "Lineal al headcount", "Exponencial sin contratar"],
-          ["Consistencia de datos", "Variable — depende del operador", "Uniforme y auditable"],
-          ["Integración de herramientas", "Silos — cada app aislada", "Orquestada — todo conectado"],
-          ["Costo operativo por volumen", "Creciente con cada hire", "Fijo y decreciente"],
-        ],
-      },
+          title: "La empresa que no automatiza hoy es más cara de operar que su competidor mañana",
+          headers: ["Capacidad", "Sin n8n", "Con n8n"],
+          rows: [
+            ["Respuesta a leads", "24–48 hrs (manual)", "< 90 seg (autónomo)"],
+            ["Escala de operaciones", "Lineal al headcount", "Exponencial sin contratar"],
+            ["Consistencia de datos", "Variable — depende del operador", "Uniforme y auditable"],
+            ["Integración de herramientas", "Silos — cada app aislada", "Orquestada — todo conectado"],
+            ["Costo operativo por volumen", "Creciente con cada hire", "Fijo y decreciente"],
+          ],
+        },
         risk: [
           { title: "Obsolescencia", text: "El mercado se mueve rápido. Sin automatización te quedas atrás." },
           { title: "Burnout", text: "Tu equipo está agotado de hacer tareas mecánicas." },
@@ -639,6 +660,23 @@ export const copy = {
     microCopy:
       "Free 45-min consultation · In Spanish · No commitment · HCC-NJ members only",
     secondaryCta: "View our services ↓",
+    trustSignals: [
+      { icon: "🏆", text: "SHCCNJ Exclusive" },
+      { icon: "🛡️", text: "30-day guarantee" },
+      { icon: "💬", text: "Support in Spanish" },
+    ],
+    heroCta: "🏆 Claim my $100 Discount →",
+    heroCopy: "$100 discount exclusive to SHCCNJ members · $197 vs $297 public price · 30-day guarantee",
+    heroSecondary: "See what you'll learn ↓",
+    heroPricePublic: "$297",
+    heroPriceMember: "$197",
+    heroPriceLabel: "exclusive SHCCNJ member price",
+    heroPills: [
+      { icon: "📅", text: "Saturday, May 2, 2026" },
+      { icon: "📍", text: "New Jersey + Online" },
+      { icon: "⏱", text: "Only 3 Hours" },
+      { icon: "🇺🇸", text: "In Spanish" },
+    ],
 
     // ── Member Banner ────────────────────────────────────────────────────────
     memberBannerTitle: "Exclusive Member Benefit",
@@ -1158,16 +1196,16 @@ export const copy = {
           },
         },
         gapTable: {
-        title: "The company that doesn't automate today is more expensive to operate than its competitor tomorrow",
-        headers: ["Capacity", "Without n8n", "With n8n"],
-        rows: [
-          ["Lead response", "24–48 hrs (manual)", "< 90 sec (autonomous)"],
-          ["Operations scale", "Linear to headcount", "Exponential without hiring"],
-          ["Data consistency", "Variable — depends on operator", "Uniform and auditable"],
-          ["Tool integration", "Silos — each app isolated", "Orchestrated — everything connected"],
-          ["Op cost per volume", "Increasing with each hire", "Fixed and decreasing"],
-        ],
-      },
+          title: "The company that doesn't automate today is more expensive to operate than its competitor tomorrow",
+          headers: ["Capacity", "Without n8n", "With n8n"],
+          rows: [
+            ["Lead response", "24–48 hrs (manual)", "< 90 sec (autonomous)"],
+            ["Operations scale", "Linear to headcount", "Exponential without hiring"],
+            ["Data consistency", "Variable — depends on operator", "Uniform and auditable"],
+            ["Tool integration", "Silos — each app isolated", "Orchestrated — everything connected"],
+            ["Op cost per volume", "Increasing with each hire", "Fixed and decreasing"],
+          ],
+        },
         risk: [
           { title: "Obsolescence", text: "The market moves fast. Without automation, you stay behind." },
           { title: "Burnout", text: "Your team is exhausted from doing mechanical tasks." },

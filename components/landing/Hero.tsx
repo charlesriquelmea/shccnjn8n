@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "framer-motion"
 import { copy } from "@/lib/copy"
 import type { Lang } from "@/lib/copy"
 import { Check } from "lucide-react"
+import { Button } from "react-day-picker"
+import { WHATSAPP_URL } from "@/lib/copy"
 
 function WorkflowDiagram({ nodes, isHovered }: { nodes: { label: string; color: string }[]; isHovered: boolean }) {
   return (
@@ -75,7 +77,7 @@ function Typewriter({ phrases, prefix }: { phrases: readonly string[]; prefix: s
   }, [])
 
   return (
-    <p className="text-lg md:text-xl font-medium mt-4 min-h-[2rem]">
+    <p className="text-lg md:text-xl font-medium mt-4 min-h-8">
       <span style={{ color: "rgba(201,195,181,0.6)" }}>{prefix} </span>
       <span style={{ color: "#D9A84E" }}>{text}</span>
       <motion.span
@@ -123,146 +125,146 @@ function BgNodes() {
   )
 }
 
-  const wf1Nodes = [
-    { label: "Form 📋", color: "#8B5CF6" },
-    { label: "n8n ⚡", color: "#8B5CF6" },
-    { label: "Sheets 📊", color: "#10B981" },
-    { label: "WhatsApp 💬", color: "#22C55E" },
-  ]
-  const wf2Nodes = [
-    { label: "Event 🎯", color: "#22D3EE" },
-    { label: "n8n ⚡", color: "#8B5CF6" },
-    { label: "Resend 📧", color: "#3B82F6" },
-    { label: "Email ✉️", color: "#3B82F6" },
-  ]
-  const wf3Nodes = [
-    { label: "Webhook 🔗", color: "#22D3EE" },
-    { label: "n8n ⚡", color: "#8B5CF6" },
-    { label: "Claude/GPT 🧠", color: "#F97316" },
-    { label: "Reply 💬", color: "#22C55E" },
-  ]
+const wf1Nodes = [
+  { label: "Form 📋", color: "#8B5CF6" },
+  { label: "n8n ⚡", color: "#8B5CF6" },
+  { label: "Sheets 📊", color: "#10B981" },
+  { label: "WhatsApp 💬", color: "#22C55E" },
+]
+const wf2Nodes = [
+  { label: "Event 🎯", color: "#22D3EE" },
+  { label: "n8n ⚡", color: "#8B5CF6" },
+  { label: "Resend 📧", color: "#3B82F6" },
+  { label: "Email ✉️", color: "#3B82F6" },
+]
+const wf3Nodes = [
+  { label: "Webhook 🔗", color: "#22D3EE" },
+  { label: "n8n ⚡", color: "#8B5CF6" },
+  { label: "Claude/GPT 🧠", color: "#F97316" },
+  { label: "Reply 💬", color: "#22C55E" },
+]
 
 // ─── Brand visual panel (right side) ─────────────────────────────────────────
 function BrandPanel() {
   const shouldReduce = useReducedMotion()
   return (
-/*     <motion.div
-      className="relative"
-      animate={shouldReduce ? {} : { y: [0, -8, 0] }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <div
-        className="rounded-2xl overflow-hidden shadow-2xl"
-        style={{
-          border: "1px solid rgba(201,147,58,0.3)",
-          backgroundColor: "#071228",
-          transform: "rotate(-1.5deg)",
-          boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,147,58,0.15)",
-        }}
-      >
-        <div
-          className="px-5 py-3 flex items-center justify-between"
-          style={{ backgroundColor: "#0C1E40", borderBottom: "1px solid rgba(201,147,58,0.2)" }}
+    /*     <motion.div
+          className="relative"
+          animate={shouldReduce ? {} : { y: [0, -8, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold" style={{ color: "#D9A84E" }}>Protolylat</span>
-            <span className="text-xs" style={{ color: "rgba(201,195,181,0.4)" }}>×</span>
-            <span className="text-xs font-bold" style={{ color: "#FDFAF4" }}>HCC-NJ</span>
-          </div>
-          <span
-            className="text-xs font-bold px-2 py-0.5 rounded-full"
-            style={{ backgroundColor: "rgba(201,147,58,0.15)", color: "#D9A84E", border: "1px solid rgba(201,147,58,0.3)" }}
+          <div
+            className="rounded-2xl overflow-hidden shadow-2xl"
+            style={{
+              border: "1px solid rgba(201,147,58,0.3)",
+              backgroundColor: "#071228",
+              transform: "rotate(-1.5deg)",
+              boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,147,58,0.15)",
+            }}
           >
-            MIEMBRO ACTIVO
-          </span>
-        </div>
-
-        <div className="p-5 flex flex-col gap-3 min-w-[280px]">
-          {[
-            { label: "IA Engineering", status: "Activo", color: "#D9A84E" },
-            { label: "Software Factory", status: "Activo", color: "#22C55E" },
-            { label: "Cloud Infrastructure", status: "Activo", color: "#22C55E" },
-            { label: "Process Automation", status: "Activo", color: "#22C55E" },
-          ].map((item, i) => (
-            <motion.div
-              key={item.label}
-              className="flex items-center justify-between gap-4"
-              initial={shouldReduce ? {} : { opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: "easeOut" }}
+            <div
+              className="px-5 py-3 flex items-center justify-between"
+              style={{ backgroundColor: "#0C1E40", borderBottom: "1px solid rgba(201,147,58,0.2)" }}
             >
               <div className="flex items-center gap-2">
-                <div
-                  className="w-2 h-2 rounded-full animate-pulse shrink-0"
-                  style={{ backgroundColor: item.color }}
-                />
-                <span className="font-mono text-xs" style={{ color: "rgba(201,195,181,0.8)" }}>
-                  {item.label}
-                </span>
+                <span className="text-xs font-bold" style={{ color: "#D9A84E" }}>Protolylat</span>
+                <span className="text-xs" style={{ color: "rgba(201,195,181,0.4)" }}>×</span>
+                <span className="text-xs font-bold" style={{ color: "#FDFAF4" }}>HCC-NJ</span>
               </div>
               <span
-                className="text-xs font-semibold px-2 py-0.5 rounded"
-                style={{ color: item.color, backgroundColor: `${item.color}18` }}
+                className="text-xs font-bold px-2 py-0.5 rounded-full"
+                style={{ backgroundColor: "rgba(201,147,58,0.15)", color: "#D9A84E", border: "1px solid rgba(201,147,58,0.3)" }}
               >
-                {item.status}
+                MIEMBRO ACTIVO
               </span>
-            </motion.div>
+            </div>
+    
+            <div className="p-5 flex flex-col gap-3 min-w-[280px]">
+              {[
+                { label: "IA Engineering", status: "Activo", color: "#D9A84E" },
+                { label: "Software Factory", status: "Activo", color: "#22C55E" },
+                { label: "Cloud Infrastructure", status: "Activo", color: "#22C55E" },
+                { label: "Process Automation", status: "Activo", color: "#22C55E" },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  className="flex items-center justify-between gap-4"
+                  initial={shouldReduce ? {} : { opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: "easeOut" }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-2 h-2 rounded-full animate-pulse shrink-0"
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="font-mono text-xs" style={{ color: "rgba(201,195,181,0.8)" }}>
+                      {item.label}
+                    </span>
+                  </div>
+                  <span
+                    className="text-xs font-semibold px-2 py-0.5 rounded"
+                    style={{ color: item.color, backgroundColor: `${item.color}18` }}
+                  >
+                    {item.status}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+            <div
+              className="px-5 py-3 flex items-center justify-between"
+              style={{ backgroundColor: "rgba(201,147,58,0.08)", borderTop: "1px solid rgba(201,147,58,0.2)" }}
+            >
+              <span className="text-xs font-semibold" style={{ color: "rgba(201,195,181,0.7)" }}>
+                Descuento miembro aplicado:
+              </span>
+              <span className="text-sm font-black font-mono" style={{ color: "#D9A84E" }}>
+                -$100
+              </span>
+            </div>
+          </div>
+        </motion.div> */
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="hidden lg:block"
+    >
+      <motion.div
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden"
+        style={{ transform: "rotate(-2deg)" }}
+      >
+        <div className="bg-zinc-800 px-4 py-2.5 flex items-center gap-2 border-b border-zinc-700">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+          <span className="text-xs text-zinc-400 font-mono ml-2">n8n · Workflow Editor</span>
+        </div>
+        <div className="p-4 flex flex-col gap-5">
+          {[
+            { label: "Lead Capture CRM", nodes: wf1Nodes },
+            { label: "Email Marketing", nodes: wf2Nodes },
+            { label: "AI Agent", nodes: wf3Nodes },
+          ].map((wf, i) => (
+            <div key={i} className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-xs text-zinc-400 font-mono">{wf.label}</span>
+              </div>
+              <WorkflowDiagram nodes={wf.nodes} isHovered={false} />
+            </div>
           ))}
         </div>
-        <div
-          className="px-5 py-3 flex items-center justify-between"
-          style={{ backgroundColor: "rgba(201,147,58,0.08)", borderTop: "1px solid rgba(201,147,58,0.2)" }}
-        >
-          <span className="text-xs font-semibold" style={{ color: "rgba(201,195,181,0.7)" }}>
-            Descuento miembro aplicado:
-          </span>
-          <span className="text-sm font-black font-mono" style={{ color: "#D9A84E" }}>
-            -$100
-          </span>
+        <div className="bg-zinc-800 border-t border-zinc-700 px-4 py-2 flex items-center gap-2">
+          <Check className="w-3.5 h-3.5 text-green-400" />
+          <span className="text-xs text-zinc-400 font-mono">3 workflows active · Last run: 2s ago · 847 executions</span>
         </div>
-      </div>
-    </motion.div> */
-              <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden"
-              style={{ transform: "rotate(-2deg)" }}
-            >
-              <div className="bg-zinc-800 px-4 py-2.5 flex items-center gap-2 border-b border-zinc-700">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <span className="text-xs text-zinc-400 font-mono ml-2">n8n · Workflow Editor</span>
-              </div>
-              <div className="p-4 flex flex-col gap-5">
-                {[
-                  { label: "Lead Capture CRM", nodes: wf1Nodes },
-                  { label: "Email Marketing", nodes: wf2Nodes },
-                  { label: "AI Agent", nodes: wf3Nodes },
-                ].map((wf, i) => (
-                  <div key={i} className="flex flex-col gap-1.5">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                      <span className="text-xs text-zinc-400 font-mono">{wf.label}</span>
-                    </div>
-                    <WorkflowDiagram nodes={wf.nodes} isHovered={false} />
-                  </div>
-                ))}
-              </div>
-              <div className="bg-zinc-800 border-t border-zinc-700 px-4 py-2 flex items-center gap-2">
-                <Check className="w-3.5 h-3.5 text-green-400" />
-                <span className="text-xs text-zinc-400 font-mono">3 workflows active · Last run: 2s ago · 847 executions</span>
-              </div>
-            </motion.div>
-          </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -313,6 +315,10 @@ export function Hero({ lang, onCtaClick }: Props) {
   const shouldReduce = useReducedMotion()
   const c = copy[lang]
 
+  const handleCTAClick = () => {
+    window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer")
+  }
+
   const scrollToServices = useCallback(() => {
     document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })
   }, [])
@@ -338,7 +344,7 @@ export function Hero({ lang, onCtaClick }: Props) {
 
       {/* Gold radial glow */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full pointer-events-none"
         aria-hidden="true"
         style={{
           background: "radial-gradient(ellipse, rgba(201,147,58,0.05) 0%, transparent 70%)",
@@ -409,10 +415,48 @@ export function Hero({ lang, onCtaClick }: Props) {
               ))}
             </motion.div>
 
+            {/* Price block */}
+              <motion.div  className="flex items-baseline gap-3 flex-wrap">
+                <span className="text-slate-500 line-through text-xl font-semibold">
+                  {c.heroPricePublic}
+                </span>
+                <span className="text-4xl font-black" style={{ color: "#C9A84C" }}>
+                  {c.heroPriceMember}
+                </span>
+                <span className="text-sm text-slate-400">{c.heroPriceLabel}</span>
+              </motion.div>
+
             {/* Member Banner */}
             <motion.div variants={fadeUp}>
               <MemberBanner lang={lang} />
             </motion.div>
+
+            {/* Date/location pills */}
+            <motion.div className="flex flex-wrap gap-2">
+              {c.heroPills.map((pill, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-slate-800 text-slate-300 border border-slate-700"
+                >
+                  <span>{pill.icon}</span>
+                  <span>{pill.text}</span>
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Trust signals */}
+            <motion.div className="flex flex-wrap items-center gap-4 text-sm">
+              {c.trustSignals.map((t, i) => (
+                <span key={i} className="flex items-center gap-1.5 text-slate-300 font-medium">
+                  <span>{t.icon}</span>
+                  <span>{t.text}</span>
+                  {i < c.trustSignals.length - 1 && (
+                    <span className="text-slate-600 ml-2">|</span>
+                  )}
+                </span>
+              ))}
+            </motion.div>
+           
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
