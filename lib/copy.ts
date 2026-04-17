@@ -65,8 +65,8 @@ export const copy = {
     heroCta: "🏆 Reclamar mis $100 de Descuento →",
     heroCopy: "Descuento de $100 exclusivo miembros SHCCNJ · $197 vs $297 precio público · Garantía de 30 días",
     heroSecondary: "Ver qué aprenderás ↓",
-    heroPricePublic: "$297",
-    heroPriceMember: "$197",
+    heroPricePublic: "$497",
+    heroPriceMember: "$397",
     heroPriceLabel: "precio exclusivo miembros SHCCNJ",
     heroPills: [
       { icon: "📅", text: "Sábado 2 de Mayo, 2026" },
