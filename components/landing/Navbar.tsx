@@ -31,7 +31,7 @@ export function Navbar({ lang, onLangChange, onCtaClick }: Props) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-md border-b"
           : "bg-transparent"
@@ -116,7 +116,9 @@ export function Navbar({ lang, onLangChange, onCtaClick }: Props) {
           {/* CTA button — hidden on very small screens, shown md+ */}
           <button
             onClick={onCtaClick}
-            className="hidden md:flex items-center font-bold text-[11px] px-3 py-2 rounded-lg transition-all hover:opacity-90 active:opacity-80 whitespace-nowrap leading-none"
+            className="hidden md:flex items-center font-bold text-[11px]
+             px-3 py-2 rounded-lg transition-all hover:opacity-90 active:opacity-80 
+             whitespace-nowrap leading-none"
             style={{ backgroundColor: "#D9A84E", color: "#04091A" }}
           >
             {c.navCta}
