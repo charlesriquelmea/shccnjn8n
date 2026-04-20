@@ -69,7 +69,7 @@ export const copy = {
     heroPriceMember: "$397",
     heroPriceLabel: "precio exclusivo miembros SHCCNJ",
     heroPills: [
-      { icon: "📅", text: "Sábado 2 de Mayo, 2026" },
+      { icon: "📅", text: "Sábado 16 de Mayo, 2026" },
       { icon: "📍", text: "New Jersey + Online" },
       { icon: "⏱", text: "Solo 3 Horas" },
       { icon: "🇺🇸", text: "En Español" },
@@ -344,7 +344,7 @@ export const copy = {
 
     // ── Workshop / n8n Build in n8n ──────────────────────────────────────────
     workshop: {
-      announcementBar: "⚡ FORMACIÓN EN VIVO · Sab 2 de Mayo, 2026 · 10 AM – 4 PM ET · n8n + WhatsApp API + IA · 6 Horas · 3 Workflows activos · Solo 50 estudiantes · $497 Early Bird →",
+      announcementBar: "⚡ FORMACIÓN EN VIVO · Sab 16 de Mayo, 2026 · 10 AM – 4 PM ET · n8n + WhatsApp API + IA · 6 Horas · 3 Workflows activos · Solo 50 estudiantes · $497 Early Bird →",
       navLinks: ["¿Qué construirás?", "Los 3 Workflows", "Inversión", "FAQ"],
       navLinkIds: ["shift", "workflows", "value", "faq"],
       ctaNav: "Asegurar cupo — $497",
@@ -360,7 +360,7 @@ export const copy = {
         "la habilidad que las agencias cobran $5,000 por implementar.",
       ],
       heroSub: "En este taller en vivo de 6 horas construyes — no teóricamente, en tiempo real, en tu propia cuenta — los 3 workflows de automatización que transforman cómo operas tu negocio desde el lunes siguiente.",
-      trust: ["Sáb 2 de Mayo - 10 AM – 4 PM ET", "3 Workflows activos", "Cobra $1,500–$5,000", "Garantía total"],
+      trust: ["Sáb 16 de Mayo - 10 AM – 4 PM ET", "3 Workflows activos", "Cobra $1,500–$5,000", "Garantía total"],
       trustIcons: ["clock", "zap", "dollar", "shield"],
       heroCta: "Asegurar mi cupo ($497) →",
       heroMicro: "6 horas · 3 workflows activos · nivel principiante-intermedio · garantía total si no automatizas nada",
@@ -555,7 +555,7 @@ export const copy = {
       stickyBtn: "Reservar →",
       footerTagline: "Formación en automatización para la comunidad latina en USA.",
       footerEventTitle: "Automatización en Producción con n8n",
-      footerDate: "Sábado 2 de Mayo, 2026",
+      footerDate: "Sábado 16 de Mayo, 2026",
       footerTime: "10 AM – 4 PM ET · 100% online",
       footerCopyright: "© 2026  Build in n8n. Formación 100% online. Eastern Time (ET). NJ / NY / USA. Hecho con ❤️ para la comunidad latina.",
       heroUrgency: {
@@ -615,7 +615,7 @@ export const copy = {
           btn: "Asegurar mi cupo ahora →",
           trust: ["🔒 Pago seguro", "💳 Cuotas disponibles", "⚡ Acceso inmediato"],
         },
-        urgencyBar: "⚡ Próximo cohort empieza el 2 de Mayo. Cupos disponibles: 22/50",
+        urgencyBar: "⚡ Próximo cohort empieza el 16 de Mayo. Cupos disponibles: 22/50",
       },
     },
   },
@@ -670,7 +670,7 @@ export const copy = {
     heroPriceMember: "$397",
     heroPriceLabel: "exclusive SHCCNJ member price",
     heroPills: [
-      { icon: "📅", text: "Saturday, May 2, 2026" },
+      { icon: "📅", text: "Saturday, May 16, 2026" },
       { icon: "📍", text: "New Jersey + Online" },
       { icon: "⏱", text: "Only 3 Hours" },
       { icon: "🇺🇸", text: "In Spanish" },
@@ -950,7 +950,7 @@ export const copy = {
 
     // ── Workshop / n8n Build in n8n ──────────────────────────────────────────
     workshop: {
-      announcementBar: "⚡ LIVE TRAINING · Sat May 2, 2026 · 10 AM – 4 PM ET · n8n + WhatsApp API + IA · 6 Hours · 3 Active Workflows · Only 50 students · $497 Early Bird →",
+      announcementBar: "⚡ LIVE TRAINING · Sat May 16, 2026 · 10 AM – 4 PM ET · n8n + WhatsApp API + IA · 6 Hours · 3 Active Workflows · Only 50 students · $497 Early Bird →",
       navLinks: ["What you'll build?", "The 3 Workflows", "Investment", "FAQ"],
       navLinkIds: ["shift", "workflows", "value", "faq"],
       ctaNav: "Secure spot — $497",
@@ -966,7 +966,7 @@ export const copy = {
         "the skill agencies charge $5,000 to implement.",
       ],
       heroSub: "In this 6-hour live workshop you build — not theoretically, in real time, on your own account — the 3 automation workflows that transform how you operate your business starting the following Monday.",
-      trust: ["Sat May 2 - 10 AM – 4 PM ET", "3 Active Workflows", "Charge $1,500–$5,000", "Full guarantee"],
+      trust: ["Sat May 16 - 10 AM – 4 PM ET", "3 Active Workflows", "Charge $1,500–$5,000", "Full guarantee"],
       trustIcons: ["clock", "zap", "dollar", "shield"],
       heroCta: "Secure my spot ($497) →",
       heroMicro: "6 hours · 3 active workflows · beginner-intermediate level · full guarantee if you don't automate anything",
@@ -1160,7 +1160,7 @@ export const copy = {
       stickyBtn: "Reserve →",
       footerTagline: "Automation training for the Latino community in the USA.",
       footerEventTitle: "Automation in Production with n8n",
-      footerDate: "Saturday May 2, 2026",
+      footerDate: "Saturday May 16, 2026",
       footerTime: "10 AM – 4 PM ET · 100% online",
       footerCopyright: "© 2026  Build in n8n. 100% online training. Eastern Time (ET). NJ / NY / USA. Made with ❤️ for the Latino community.",
       heroUrgency: {
@@ -1220,7 +1220,7 @@ export const copy = {
           btn: "Secure my spot now →",
           trust: ["🔒 Secure payment", "💳 Installments available", "⚡ Immediate access"],
         },
-        urgencyBar: "⚡ Next cohort starts May 2nd. Spots available: 22/50",
+        urgencyBar: "⚡ Next cohort starts May 16nd. Spots available: 22/50",
       },
     },
   },
