@@ -1,0 +1,185 @@
+================================================================================
+DOCUMENTACIÓN DEL PROYECTO — Protolylat x HCC-NJ Landing Page
+================================================================================
+
+1. DESCRIPCIÓN GENERAL
+--------------------------------------------------------------------------------
+Sitio web landing page bilingüe (español/inglés) para Protolylat, una fábrica
+de software e ingeniería de IA, en alianza oficial con la Cámara de Comercio
+Hispana de Nueva Jersey (HCC-NJ). Genera leads y promueve el taller
+"Build in n8n" de automatización.
+
+URL del proyecto: (entorno local)
+Framework: Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
+Creado con: v0.dev / shadcn/ui (New York style)
+
+
+2. TECNOLOGÍAS PRINCIPALES
+--------------------------------------------------------------------------------
+- Next.js 16.2.0          — Framework React con App Router
+- React 19.2.4            — Librería UI
+- TypeScript 5.7.3        — Tipado estático
+- Tailwind CSS 4.2.0      — Estilos utilitarios
+- Framer Motion 11        — Animaciones
+- shadcn/ui               — Componentes UI (Radix UI primitives)
+- Resend                  — API de correo transaccional
+- react-hook-form + zod   — Manejo y validación de formularios
+- Lucide React            — Íconos
+- @vercel/analytics       — Analítica
+- tw-animate-css          — Animaciones CSS vía Tailwind
+- pnpm (package manager)
+
+
+3. ESTRUCTURA DEL DIRECTORIO
+--------------------------------------------------------------------------------
+shccnjn8n/
+├── .env.local                     # Variables de entorno (API keys, emails)
+├── .gitignore
+├── app/
+│   ├── api/
+│   │   └── send-email/
+│   │       └── route.ts           # Ruta API POST → envía email vía Resend
+│   ├── globals.css                # Estilos globales + design system custom
+│   ├── layout.tsx                 # Layout raíz (fonts, metadata, tema oscuro)
+│   └── page.tsx                   # Página principal (compone secciones)
+├── components/
+│   ├── landing/                   # 20 componentes de secciones del landing
+│   │   ├── AnnouncementBar.tsx
+│   │   ├── Credibility.tsx
+│   │   ├── Curriculum.tsx
+│   │   ├── FAQ.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Guarantee.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Instructors.tsx
+│   │   ├── LeadForm.tsx           # Formulario conversacional multi-paso
+│   │   ├── MobileStickyBar.tsx
+│   │   ├── N8nAdvantage.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── PainPoints.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── Shift.tsx
+│   │   ├── TechTicker.tsx
+│   │   ├── Testimonials.tsx
+│   │   ├── ValueStack.tsx
+│   │   ├── WorkflowCards.tsx
+│   │   └── WorkflowsSection.tsx
+│   ├── sections/
+│   │   └── HeroUrgencySection.tsx # Sección de urgencia/escasez con contadores
+│   ├── theme-provider.tsx
+│   └── ui/                       # 57 componentes shadcn/ui (acordeón, alerta,
+│                                  #   botón, card, diálogo, formulario, etc.)
+├── components.json               # Configuración de shadcn/ui
+├── hooks/
+│   ├── use-mobile.ts
+│   └── use-toast.ts
+├── lib/
+│   ├── copy.ts                   # Todo el texto bilingüe (1227 líneas)
+│   └── utils.ts                  # Función cn() (clsx + tailwind-merge)
+├── next.config.mjs               # Config Next.js
+├── package.json
+├── postcss.config.mjs
+├── public/
+│   └── favicon.png
+├── styles/
+│   └── globals.css               # Tema por defecto de shadcn/ui (oklch)
+└── tsconfig.json
+
+
+4. FUNCIONALIDADES
+--------------------------------------------------------------------------------
+4.1. Landing page bilingüe (español/inglés)
+     - Toggle de idioma en la UI
+     - Todo el copy centralizado en lib/copy.ts con objetos `es` e `en`
+
+4.2. Generación de leads (formulario multi-paso)
+     - 6 pasos: nombre → teléfono (WhatsApp) → email → tipo de negocio →
+       desafío tecnológico → envío
+     - Validación con zod + react-hook-form
+     - Al enviar: llama a /api/send-email y abre WhatsApp con mensaje
+       predefinido
+
+4.3. Envío de email transaccional
+     - Endpoint POST /api/send-email
+     - Usa Resend SDK para enviar HTML email estilizado con datos del lead
+     - Destinatarios configurados en .env.local:
+       * c.scott@protolylat.com
+       * carla.scott1@outlook.com
+       * business@protolylat.com
+
+4.4. Taller "Build in n8n"
+     - Fecha: Sábado 16 de mayo de 2026, 10 AM - 4 PM ET
+     - Precio: $497 (early bird), $397 (miembros HCC-NJ)
+     - Cupo: 50 estudiantes
+     - Currículo: 3 workflows (Lead Capture, Email Marketing, AI Agent)
+     - Transmisión en vivo, en español
+
+4.5. Secciones del landing (orden en página)
+     - AnnouncementBar, Navbar, Hero, PainPoints, TechTicker, ValueStack,
+       N8nAdvantage, WorkflowsSection, WorkflowCards, Curriculum,
+       Instructors, Shift, Guarantee, Pricing, Testimonials, FAQ,
+       Credibility, LeadForm, Footer, MobileStickyBar
+     - HeroUrgencySection (sección de urgencia con calculadora de costos)
+
+4.6. Diseño
+     - Tema oscuro (navy #0B1426, dorado #D4A843, crema)
+     - Tipografía: Inter (sans-serif) + Playfair Display (serif)
+     - Totalmente responsive
+
+
+5. SISTEMA DE ESTILOS (Design System)
+--------------------------------------------------------------------------------
+- Archivo principal: app/globals.css
+- Variables CSS personalizadas (paleta navy/gold/cream/burgundy)
+- Estilos basados en Tailwind CSS v4 con @theme
+- Componentes shadcn/ui con variantes "new-york"
+- Animaciones con Framer Motion (framer-motion v11)
+- Tema oscuro fijo (data-theme="dark" en <html>)
+
+
+6. SCRIPTS DISPONIBLES (package.json)
+--------------------------------------------------------------------------------
+- pnpm dev         → Inicia servidor de desarrollo (next dev)
+- pnpm build       → Compila para producción (next build)
+- pnpm start       → Inicia servidor de producción (next start)
+- pnpm lint        → Ejecuta ESLint
+
+
+7. VARIABLES DE ENTORNO (.env.local)
+--------------------------------------------------------------------------------
+MAILPRIMERO      = 
+MAILSEGUNDO      = 
+MAILTERCERO      = 
+RESEND_API_KEY   = 
+
+
+8. FLUJO DEL USUARIO
+--------------------------------------------------------------------------------
+1. Usuario llega al landing (default: español)
+2. Navega secciones informativas (hero, pain points, beneficios, etc.)
+3. Ve el taller de n8n con pricing, currículo e instructores
+4. Completa el formulario de lead multi-paso
+5. Al enviar:
+   a. Se envía un email con los datos a 3 destinatarios vía Resend
+   b. Se abre WhatsApp con mensaje de agradecimiento predefinido
+6. El lead es redirigido a WhatsApp para continuar la conversación
+
+
+9. CONFIGURACIONES CLAVE
+--------------------------------------------------------------------------------
+- next.config.mjs: Ignora errores de TS en build, imágenes sin optimizar
+- tsconfig.json: Target ES6, strict mode, paths @/* → ./*
+- components.json: shadcn/ui new-york, base color neutral, CSS variables
+
+
+10. MANTENIMIENTO Y EXTENSIÓN
+--------------------------------------------------------------------------------
+- Para agregar una sección: crear componente en components/landing/ e
+  importarlo en app/page.tsx
+- Para modificar texto: editar lib/copy.ts (objetos es/en)
+- Para agregar un paso al formulario: modificar components/landing/LeadForm.tsx
+- Para cambiar estilos globales: editar app/globals.css
+- Para cambiar destinatarios de email: editar .env.local
+- Los componentes shadcn/ui están en components/ui/ y se pueden regenerar
+  con: npx shadcn@latest add [componente]
+
